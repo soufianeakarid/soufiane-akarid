@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Akarid — AI Visual Creator</title>
 <style>
 .contact{padding:120px 6vw;background:#090909;border-top:1px solid #1d1b18}
@@ -295,6 +297,70 @@ h1 span{color:#d9aa55}
     filter:brightness(.45);
     transform:scale(1.05);
     transition:.4s;
+}
+  /* MOBILE */
+@media (max-width: 600px){
+
+  body{
+    overflow-x:hidden;
+  }
+
+  .nav{
+    padding:20px 5vw;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .hero{
+    padding:70px 5vw 60px;
+  }
+
+  .hero-content{
+    display:block;
+  }
+
+  .hero h1{
+    font-size:clamp(48px, 14vw, 70px);
+    line-height:.95;
+    letter-spacing:-.04em;
+  }
+
+  .hero p{
+    font-size:18px;
+    line-height:1.6;
+  }
+
+  .hero-buttons{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:14px;
+  }
+
+  .hero-buttons a{
+    width:auto;
+  }
+
+  .services-grid{
+    grid-template-columns:1fr;
+  }
+
+  .service-card{
+    min-height:auto;
+  }
+
+  .service-card img{
+    width:100%;
+    height:auto;
+    max-height:300px;
+    object-fit:cover;
+  }
+
+  .project{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 
