@@ -348,15 +348,18 @@ h1 span{color:#d9aa55}
     grid-template-columns:1fr;
   }
 
-  .service-card{
-    min-height:auto;
+    .service-card{
+    width:100%;
+    box-sizing:border-box;
+    padding:22px;
   }
 
-  .service-card img{
+   .service-card img{
     width:100%;
     height:auto;
-    max-height:300px;
-    object-fit:cover;
+    max-width:100%;
+    object-fit:contain;
+    display:block;
   }
 
   .project{
