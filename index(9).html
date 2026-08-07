@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akarid — AI Visual Creator</title>
+<style>
+.contact{padding:120px 6vw;background:#090909;border-top:1px solid #1d1b18}
+.contact-box{border:1px solid #514b40;border-radius:28px;padding:65px;display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:end;background:radial-gradient(circle at 85% 20%,rgba(217,170,85,.10),transparent 38%),#0f0f0f}
+.contact-box h2{font-size:clamp(42px,5.5vw,76px);line-height:1;letter-spacing:-.045em;margin-top:15px}
+.contact-box p{color:#99958d;max-width:620px;line-height:1.7;font-size:16px;margin-top:22px}
+.contact-actions{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.contact-button{display:inline-block;text-decoration:none;padding:16px 24px;border-radius:999px;font-size:14px;font-weight:700}
+.contact-link{color:#d9aa55;text-decoration:none;font-size:14px;font-weight:700}
+.footer{padding:45px 6vw 25px;background:#070707;border-top:1px solid #1d1b18}
+.footer-inner{max-width:1400px;margin:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px;align-items:start}
+.footer p{color:#77736b;font-size:12px;margin-top:8px}
+.footer-links,.footer-socials{display:flex;gap:22px;flex-wrap:wrap;justify-content:center}
+.footer-socials{justify-content:flex-end}
+.footer a{color:#99958d;text-decoration:none;font-size:12px}
+.footer a:hover{color:#f5f1e8}
+.footer-bottom{max-width:1400px;margin:40px auto 0;padding-top:20px;border-top:1px solid #25231f;display:flex;justify-content:space-between;color:#5f5b54;font-size:11px}
+@media(max-width:800px){
+  .contact{padding:85px 5vw}
+  .contact-box{padding:38px 28px;grid-template-columns:1fr;align-items:start}
+  .footer{padding:40px 5vw 25px}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-links,.footer-socials{justify-content:flex-start}
+  .footer-bottom{flex-direction:column;gap:8px}
+}
+
+.about{padding:120px 6vw;background:#090909;border-top:1px solid #1d1b18}
+.about-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:80px;align-items:center}
+.about-portrait {
+    width: 100%;
+    height: 560px;
+    overflow: hidden;
+    border-radius: 24px;
+}
+
+.about-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 24px;
+}.about-copy>p{color:#aaa59b;max-width:650px;font-size:17px;line-height:1.8;margin-top:25px}
+.about-points{margin-top:38px;border-top:1px solid #302d28}
+.about-points>div{padding:18px 0;border-bottom:1px solid #302d28}
+.about-points strong{display:block;font-size:15px}
+.about-points span{display:block;color:#77736b;font-size:13px;margin-top:5px}
+.why{padding:120px 6vw;background:#0c0c0c;border-top:1px solid #1d1b18}
+.why-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px;margin-top:35px}
+.why-list{border-top:1px solid #302d28}
+.why-item{display:grid;grid-template-columns:50px 1fr;gap:22px;padding:28px 0;border-bottom:1px solid #302d28}
+.why-item>span{color:#d9aa55;font-size:11px;letter-spacing:.12em}
+.why-item h3{font-size:21px}
+.why-item p{color:#99958d;line-height:1.6;font-size:14px;margin-top:7px;max-width:600px}
+@media(max-width:900px){
+  .about,.why{padding:85px 5vw}
+  .about-grid,.why-grid{grid-template-columns:1fr;gap:45px}
+  .about-portrait{min-height:400px}
+ img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 24px;
+}}
+
+.process{padding:120px 6vw;background:#0c0c0c;border-top:1px solid #1d1b18}
+.process-list{margin-top:55px;border-top:1px solid #302d28}
+.process-step{display:grid;grid-template-columns:90px 1fr 130px;gap:30px;align-items:center;padding:32px 0;border-bottom:1px solid #302d28}
+.process-index{color:#d9aa55;font-size:12px;letter-spacing:.15em;font-weight:700}
+.process-main h3{font-size:25px;letter-spacing:-.025em}
+.process-main p{color:#99958d;font-size:15px;line-height:1.6;margin-top:8px}
+.process-tag{justify-self:end;color:#77736b;font-size:10px;letter-spacing:.16em}
+@media(max-width:700px){
+  .process{padding:85px 5vw}
+  .process-step{grid-template-columns:55px 1fr;gap:18px}
+  .process-tag{grid-column:2;justify-self:start;margin-top:-10px}
+}
+
+.services{padding:120px 6vw;background:#090909;border-top:1px solid #1d1b18}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:55px}
+.service-card{position:relative;border:1px solid #302d28;border-radius:22px;padding:30px;background:#0f0f0f;min-height:390px;overflow:hidden}
+.service-number{color:#d9aa55;font-size:11px;letter-spacing:.16em;font-weight:700}
+.service-icon{position:absolute;right:28px;top:25px;color:#d9aa55;font-size:28px}
+.service-card h3{font-size:28px;letter-spacing:-.025em;margin-top:45px}
+.service-card p{color:#99958d;line-height:1.65;font-size:15px;max-width:520px;margin-top:15px}
+
+.service-card img{
+    width:580px;
+    height:580px;
+    display:block;
+    object-fit:cover;
+    border-radius:14px;
+    margin-top:20px;
+}
+
+.service-placeholder{
+    width:100%;
+    height: 100px;px;
+    border-radius:16px;
+    overflow:hidden;
+    margin-top:20px;
+}
+
+.service-placeholder img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}@media(max-width:900px){.services{padding:85px 5vw}.services-grid{grid-template-columns:1fr}.service-card{min-height:360px}}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;background:#090909;color:#f5f1e8}
+.hero{min-height:100vh;padding:28px 6vw 70px;display:flex;flex-direction:column;overflow:hidden;position:relative}
+.hero:before{content:"";position:absolute;width:520px;height:520px;right:-180px;top:90px;background:rgba(215,164,70,.12);filter:blur(120px);border-radius:50%;pointer-events:none}
+nav{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2}
+.logo{font-size:22px;font-weight:800;letter-spacing:.18em}
+.nav-links{display:flex;gap:34px}
+.nav-links a,.nav-cta{color:#d8d3c8;text-decoration:none;font-size:14px}
+.nav-cta{border:1px solid #6c604c;padding:11px 18px;border-radius:999px}
+.hero-content{flex:1;max-width:1400px;width:100%;margin:55px auto 0;display:grid;grid-template-columns:.9fr 1.1fr;gap:55px;align-items:center;position:relative;z-index:1}
+.eyebrow{color:#d9aa55;font-size:12px;letter-spacing:.24em;font-weight:700;margin-bottom:20px}
+h1{font-size:clamp(48px,6vw,88px);line-height:.98;letter-spacing:-.045em;max-width:760px}
+h1 span{color:#d9aa55}
+.subtitle{color:#aaa59b;font-size:18px;line-height:1.7;max-width:590px;margin-top:28px}
+.buttons{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap}
+.btn{text-decoration:none;padding:15px 22px;border-radius:999px;font-size:14px;font-weight:700;transition:transform .25s ease,opacity .25s ease}
+.btn:hover{transform:translateY(-2px);opacity:.9}
+.primary{background:#d9aa55;color:#111}.secondary{border:1px solid #514b40;color:#f5f1e8}
+.visual{width:100%;border:1px solid #302d28;border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45);background:#111}
+.visual img{display:block;width:100%;height:auto;object-fit:cover}
+.note{margin-top:20px;color:#77736b;font-size:12px;letter-spacing:.05em}
+
+/* Featured Work */
+.work{padding:120px 6vw;background:#0c0c0c;border-top:1px solid #1d1b18}
+.section-wrap{max-width:1400px;margin:auto}
+.section-kicker{color:#d9aa55;font-size:12px;letter-spacing:.24em;font-weight:700;margin-bottom:16px}
+.section-title{font-size:clamp(38px,5vw,68px);letter-spacing:-.04em;line-height:1.02}
+.section-intro{color:#99958d;max-width:650px;font-size:17px;line-height:1.7;margin-top:20px}
+.project{margin-top:60px;display:grid;grid-template-columns:1.15fr .85fr;gap:42px;align-items:center}
+.project-image{border:1px solid #302d28;border-radius:22px;overflow:hidden;background:#111}
+.project-image img{display:block;width:100%;height:auto}
+.project-copy{padding:10px 0}
+.project-tag{color:#d9aa55;font-size:12px;letter-spacing:.2em;font-weight:700}
+.project-title{font-size:clamp(32px,4vw,52px);margin-top:14px;letter-spacing:-.03em}
+.project-desc{color:#aaa59b;line-height:1.7;margin-top:18px;font-size:16px}
+.project-flow{display:flex;gap:10px;align-items:center;margin-top:25px;color:#d9aa55;font-size:12px;letter-spacing:.08em}
+.project-flow span{color:#77736b}
+
+.qr-card{margin-top:32px;display:flex;align-items:center;gap:18px;border:1px solid #302d28;border-radius:18px;padding:14px;background:#101010;max-width:330px}
+.qr-card img{width:100px;height:100px;object-fit:contain;background:#fff;border-radius:8px}
+.qr-card{
+    text-decoration:none;
+    cursor:pointer;
+}
+
+.qr-card:hover{
+    border-color:#d9aa55;
+}
+
+
+.qr-label{font-size:13px;color:#d8d3c8;line-height:1.5}
+.qr-label strong{display:block;color:#f5f1e8;margin-bottom:4px}
+
+
+.image-placeholder{min-height:420px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#111,#15130f,#0d0d0d);border:1px dashed #514b40}
+.image-placeholder div{text-align:center;color:#d9aa55;letter-spacing:.16em}
+.image-placeholder span{display:block;font-size:12px;font-weight:700}
+.image-placeholder small{display:block;margin-top:9px;color:#77736b;font-size:11px;letter-spacing:.06em}
+.link-placeholder{display:block;color:#77736b;font-size:12px;margin-top:4px}.qr-placeholder{width:92px;height:92px;display:flex;align-items:center;justify-content:center;border:1px dashed #514b40;border-radius:8px;color:#77736b;font-size:13px;letter-spacing:.12em;flex-shrink:0}
+
+
+.project-reverse {
+    margin-top: 100px;
+}
+
+.avatar-visual-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.avatar-placeholder {
+    height: 210px;
+    border: 1px dashed #514b40;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #111, #15130f);
+    overflow: hidden;
+}
+
+.avatar-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.avatar-placeholder:last-child {
+    grid-column: auto;
+}
+
+.avatar-placeholder span{display:block;font-size:11px;font-weight:700;letter-spacing:.16em}
+.avatar-placeholder small{display:block;margin-top:8px;color:#77736b;font-size:10px;letter-spacing:.06em}
+.avatar-flow{display:flex;align-items:stretch;gap:8px;margin-top:28px}
+.avatar-step{border:1px solid #302d28;border-radius:14px;padding:14px;flex:1;background:#101010}
+.avatar-step span{color:#d9aa55;font-size:10px}
+.avatar-step strong{display:block;margin-top:7px;font-size:11px;letter-spacing:.08em}
+.avatar-step small{display:block;margin-top:6px;color:#77736b;font-size:10px;line-height:1.4}
+.avatar-arrow{display:flex;align-items:center;color:#d9aa55}
+.demo-link{display:inline-block;margin-top:28px;color:#d9aa55;text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.04em}
+@media(max-width:900px){
+  .avatar-flow{flex-direction:column}
+  .avatar-arrow{justify-content:center;transform:rotate(90deg)}
+  .avatar-visual-grid{grid-template-columns:1fr}
+  .avatar-placeholder:last-child{grid-column:auto}
+}
+
+.service-placeholder{
+    width:580px;
+    height:580px;
+    margin:25px auto 0;
+    overflow:hidden;
+    border-radius:18px;
+}
+
+.service-placeholder img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+.video-link{
+    position:relative;
+    display:block;
+    width:100%;
+    height:100%;
+    text-decoration:none;
+}
+
+.video-link img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.watch-text{
+    position:absolute;
+    left:50%;
+    bottom:15px;
+    transform:translateX(-50%);
+    background:rgba(0,0,0,.75);
+    color:#fff;
+    padding:10px 18px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.video-link:hover .watch-text{
+    background:#d9aa55;
+    color:#111;
+}
+.service-placeholder{
+    position:relative;
+    overflow:hidden;
+    border-radius:18px;
+}
+
+.video-overlay{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:rgba(0,0,0,.75);
+    color:#fff;
+    text-decoration:none;
+    padding:12px 24px;
+    border-radius:30px;
+    font-weight:600;
+    opacity:0;
+    transition:.3s;
+}
+
+.service-placeholder:hover .video-overlay{
+    opacity:1;
+}
+
+.service-placeholder:hover img{
+    filter:brightness(.45);
+    transform:scale(1.05);
+    transition:.4s;
+}
+</style>
+
+</head>
+<body>
+
+<section class="hero">
+<nav>
+<div class="logo">AKARID</div>
+<div class="nav-links">
+<a href="#work">Work</a><a href="#services">Services</a><a href="#about">About</a>
+</div>
+<a class="nav-cta" href="#contact">Let's Talk</a>
+</nav>
+
+<div class="hero-content">
+<div>
+<div class="eyebrow">AI VISUAL CREATOR</div>
+<h1>I Turn Products Into <span>Visual Experiences.</span></h1>
+<p class="subtitle">AI-powered product photography, advertising videos and social media content designed to make brands stand out.</p>
+<div class="buttons">
+<a class="btn primary" href="#work">View My Work</a>
+<a class="btn secondary" href="#contact">Start a Project</a>
+</div>
+<div class="note">Premium visuals • AI-powered production • Social-ready content</div>
+</div>
+<div class="visual">
+  <img src="images/giig.png" alt="AI product transformation — before, after and final result">
+</div>
+</div>
+</section>
+
+<section class="work" id="work">
+<div class="section-wrap">
+<div class="section-kicker">SELECTED WORK</div>
+<h2 class="section-title">From simple product photos<br>to premium visuals.</h2>
+<p class="section-intro">A look at how I transform ordinary product photography into polished commercial content using AI.</p>
+
+<article class="project">
+<div class="project-image">
+    <img src="images/ChatGPT Image Aug 7, 2026, 03_37_45 PM.png" alt="Vintage Paris Clock">
+</div>
+
+<div class="project-copy">
+<div class="project-tag">AI PRODUCT PHOTOGRAPHY / ADVERTISING</div>
+<h3 class="project-title">Vintage Paris Clock</h3>
+<p class="project-desc">A simple product photo transformed into a warm, premium lifestyle visual designed for e-commerce and advertising.</p>
+
+<div class="project-flow">
+ORIGINAL <span>→</span> AI VISUAL <span>→</span> VIDEO
+</div>
+
+<a href="https://vimeo.com/1216507583?share=copy&fl=sv&fe=cif"
+   class="qr-card"
+   target="_blank"
+   rel="noopener noreferrer">
+
+  <div class="qr-placeholder">
+    <img src="images/qr.png" alt="QR Code to watch the video">
+  </div>
+
+  <div class="qr-label">
+    <strong>Watch the Video ↗</strong>
+    <span>Scan the QR code or click to watch</span>
+  </div>
+
+</a>
+</div>
+</div>
+
+<article class="project project-reverse">
+  <div class="project-copy">
+    <div class="project-tag">AI AVATAR / TALKING VIDEO</div>
+    <h3 class="project-title">AI Talking Avatar</h3>
+    <p class="project-desc">
+      From a simple photo to a professional AI presenter — designed for social media,
+      presentations, educational content and marketing.
+    </p>
+
+    <div class="avatar-flow">
+      <div class="avatar-step">
+        <span>01</span>
+        <strong>ORIGINAL PHOTO</strong>
+        <small>Simple client photo</small>
+      </div>
+      <div class="avatar-arrow">→</div>
+      <div class="avatar-step">
+        <span>02</span>
+        <strong>AI AVATAR</strong>
+        <small>Professional visual</small>
+      </div>
+      <div class="avatar-arrow">→</div>
+      <div class="avatar-step">
+        <span>03</span>
+        <strong>TALKING VIDEO</strong>
+        <small>AI presenter</small>
+      </div>
+    </div>
+
+<a class="demo-link"
+   href="https://vimeo.com/1216508936?share=copy&fl=sv&fe=ci"
+   target="_blank"
+   rel="noopener noreferrer">
+   Watch Demo →
+</a>  </div>
+
+
+
+
+<div class="avatar-visual-grid">
+
+    <div class="avatar-placeholder">
+        <img src="images/IMG_0366 2.png" alt="Original Photo">
+    </div>
+
+    <div class="avatar-placeholder">
+        <img src="images/1767347645858-IMG_0362.PNG" alt="AI Avatar">
+    </div>
+
+    <div class="avatar-placeholder">
+        <img src="images/key_1767523973752_611335.jpg" alt="Talking Avatar Video">
+    </div>
+
+</div>
+  </div>
+</article>
+
+</article>
+</div>
+</section>
+
+
+<section class="services" id="services">
+  <div class="section-wrap">
+    <div class="section-kicker">WHAT I CREATE</div>
+    <h2 class="section-title">Visual content built<br>for modern brands.</h2>
+    <p class="section-intro">
+      From a single product photo to complete AI-powered content,
+      I create visuals designed to look premium and perform online.
+    </p>
+
+    <div class="services-grid">
+
+      <article class="service-card">
+        <div class="service-number">01</div>
+        <div class="service-icon">✦</div>
+        <h3>AI Product Photography</h3>
+        <p>
+          Transform simple product photos into premium commercial
+          visuals for e-commerce, advertising and social media.
+        </p>
+        <div class="service-placeholder">
+        <img src="images/Decorative_clock_on_console_table_202608061406.jpeg" alt="Social Media Content">
+        <a href="https://vimeo.com/1216507583?share=copy&fl=sv&fe=ci"
+       target="_blank"
+       class="video-overlay">
+        ▶ Watch Demo
+    </a>
+
+        </div>
+      </article>
+
+ <article class="service-card">
+    <div class="service-number">02</div>
+    <div class="service-icon">◉</div>
+
+    <h3>AI Advertising Videos</h3>
+
+    <p>
+      Turn products into cinematic advertising videos with
+      creative scenes, motion, voice and storytelling.
+    </p>
+<div class="service-placeholder">
+    <a href="https://vimeo.com/1215794932?share=copy&fl=sv&fe=ci" target="_blank" class="video-link">
+        <img src="images/gig.png" alt="AI Advertising Videos">
+      <a href="https://vimeo.com/1215794932?share=copy&fl=sv&fe=ci"
+       target="_blank"
+       class="video-overlay">
+        ▶ Watch Demo
+    </a>
+    </a>
+</div>
+</article>
+      </article>
+
+      <article class="service-card">
+        <div class="service-number">03</div>
+        <div class="service-icon">◌</div>
+        <h3>AI Talking Avatars</h3>
+        <p>
+          Turn an ordinary photo into a professional AI presenter
+          who can speak, explain, educate or promote.
+        </p>
+       <div class="service-placeholder">
+
+    <img src="images/key_1767523973752_611335.jpg" alt="AI Talking Avatar">
+
+    <a href="https://vimeo.com/1215794932?share=copy&fl=sv&fe=ci"
+       target="_blank"
+       class="video-overlay">
+        ▶ Watch Demo
+    </a>
+
+</div>
+      </article>
+
+      <article class="service-card">
+        <div class="service-number">04</div>
+        <div class="service-icon">＋</div>
+        <h3>Social Media Content</h3>
+        <p>
+          Create scroll-stopping visual content for Instagram,
+          TikTok and other social platforms.
+        </p>
+<div class="service-image">
+    <img src="images/ChatGPT Image Aug 7, 2026, 06_11_11 PM.png" alt="Social Media Content">
+</div>      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="process" id="process">
+  <div class="section-wrap">
+    <div class="section-kicker">HOW IT WORKS</div>
+    <h2 class="section-title">From idea to<br>final visual.</h2>
+    <p class="section-intro">
+      A simple creative process that turns your idea or product into
+      polished, ready-to-use content.
+    </p>
+
+    <div class="process-list">
+
+      <article class="process-step">
+        <div class="process-index">01</div>
+        <div class="process-main">
+          <h3>Send Your Product</h3>
+          <p>Send me your product photo, brief, idea or reference.</p>
+        </div>
+        <div class="process-tag">BRIEF</div>
+      </article>
+
+      <article class="process-step">
+        <div class="process-index">02</div>
+        <div class="process-main">
+          <h3>Creative Direction</h3>
+          <p>We define the concept, visual style, message and direction.</p>
+        </div>
+        <div class="process-tag">CONCEPT</div>
+      </article>
+
+      <article class="process-step">
+        <div class="process-index">03</div>
+        <div class="process-main">
+          <h3>AI Production</h3>
+          <p>I create the visuals, animations, avatar, voice and video.</p>
+        </div>
+        <div class="process-tag">CREATE</div>
+      </article>
+
+      <article class="process-step">
+        <div class="process-index">04</div>
+        <div class="process-main">
+          <h3>Final Delivery</h3>
+          <p>You receive polished content ready for social media or advertising.</p>
+        </div>
+        <div class="process-tag">DELIVER</div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="about" id="about">
+  <div class="section-wrap about-grid">
+
+<div class="about-portrait">
+    <img src="images/IMG_0347.PNG" alt="Soufiane - AI Visual Creator">
+</div>
+
+    <div class="about-copy">
+      <div class="section-kicker">ABOUT ME</div>
+      <h2 class="section-title">Creative thinking,<br>powered by AI.</h2>
+      <p>
+        I'm Soufiane, a digital creator specialized in AI-generated images
+        and videos. I help brands transform simple ideas and products into
+        premium visual content for social media, e-commerce and advertising.
+      </p>
+
+      <div class="about-points">
+        <div>
+          <strong>AI + Creativity</strong>
+          <span>Technology with a strong visual direction.</span>
+        </div>
+        <div>
+          <strong>Built for Brands</strong>
+          <span>Content created with your audience and objective in mind.</span>
+        </div>
+        <div>
+          <strong>From Idea to Video</strong>
+          <span>One creative workflow from concept to final delivery.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="why" id="why">
+  <div class="section-wrap">
+    <div class="section-kicker">WHY WORK WITH ME</div>
+    <div class="why-grid">
+      <div>
+        <h2 class="section-title">More than<br>just AI images.</h2>
+      </div>
+
+      <div class="why-list">
+        <div class="why-item">
+          <span>01</span>
+          <div>
+            <h3>Premium Visual Direction</h3>
+            <p>I focus on the idea, composition, lighting and story — not just generating an image.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span>02</span>
+          <div>
+            <h3>Content That Has a Purpose</h3>
+            <p>Every visual is created to communicate, attract attention and support your brand.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span>03</span>
+          <div>
+            <h3>One Creative Partner</h3>
+            <p>Images, videos, avatars and social content can all be developed through one workflow.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="contact" id="contact">
+  <div class="section-wrap">
+    <div class="contact-box">
+      <div>
+        <div class="section-kicker">LET'S WORK TOGETHER</div>
+        <h2>Have a product<br>that deserves better visuals?</h2>
+        <p>
+          Tell me what you're building and let's turn your idea,
+          product or story into content people remember.
+        </p>
+      </div>
+
+      <div class="contact-actions">
+        <a class="contact-button primary" href="mailto:soufianakarid@gmail.com">Start a Project ↗</a>
+<a class="contact-link"
+   href="https://wa.me/212665892229"
+   target="_blank"
+   rel="noopener noreferrer">
+   WhatsApp →
+</a>      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="logo">AKARID</div>
+      <p>AI Visual Creator</p>
+    </div>
+    <div class="footer-links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-socials">
+   <a href="https://www.instagram.com/soufiane_akarid?igsh=MXVraTZ5bnA3MmFiMg%3D%3D&utm_source=qr"
+       target="_blank"
+       rel="noopener noreferrer">
+       Instagram
+    </a>
+
+    <a href="https://www.linkedin.com/in/akaridsoufiane/"
+       target="_blank"
+       rel="noopener noreferrer">
+       LinkedIn
+    </a>
+  
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Akarid. All rights reserved.</span>
+    <span>AI-powered visual content.</span>
+  </div>
+</footer>
+
+</body>
+</html>
