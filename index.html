@@ -286,6 +286,38 @@ h1 span{color:#d9aa55}
     transform:scale(1.05);
     transition:.4s;
 }
+  @media (max-width:600px){
+
+  .services-grid{
+    grid-template-columns:1fr;
+  }
+
+  .service-card{
+    width:100%;
+    box-sizing:border-box;
+    padding:22px;
+  }
+
+  .service-placeholder{
+    width:100%;
+    height:auto;
+    overflow:hidden;
+    margin-top:20px;
+  }
+
+  .service-placeholder img{
+    width:100%;
+    height:auto !important;
+    max-width:100%;
+    object-fit:contain !important;
+    display:block;
+  }
+
+  .project{
+    grid-template-columns:1fr;
+  }
+
+}
   /* MOBILE */
 @media (max-width: 600px){
 
