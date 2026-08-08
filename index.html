@@ -77,50 +77,31 @@
 .process-main h3{font-size:25px;letter-spacing:-.025em}
 .process-main p{color:#99958d;font-size:15px;line-height:1.6;margin-top:8px}
 .process-tag{justify-self:end;color:#77736b;font-size:10px;letter-spacing:.16em}
-@media(max-width:700px){
-  .process{padding:85px 5vw}
-  .process-step{grid-template-columns:55px 1fr;gap:18px}
-  .process-tag{grid-column:2;justify-self:start;margin-top:-10px}
+
+.service-card img{
+    width:580px;
+    height:580px;
+    display:block;
+    object-fit:cover;
+    border-radius:14px;
+    margin-top:20px;
 }
 
-.services{padding:120px 6vw;background:#090909;border-top:1px solid #1d1b18}
-.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:55px}
-.service-card{position:relative;border:1px solid #302d28;border-radius:22px;padding:30px;background:#0f0f0f;min-height:390px;overflow:hidden}
-.service-number{color:#d9aa55;font-size:11px;letter-spacing:.16em;font-weight:700}
-.service-icon{position:absolute;right:28px;top:25px;color:#d9aa55;font-size:28px}
-.service-card h3{font-size:28px;letter-spacing:-.025em;margin-top:45px}
-.service-card p{color:#99958d;line-height:1.65;font-size:15px;max-width:520px;margin-top:15px}
-
 .service-placeholder{
-  position:relative;
-  width:100%;
-  height:280px;
-  margin-top:20px;
-  border-radius:16px;
-  overflow:hidden;
+    width:100%;
+    height: 100px;px;
+    border-radius:16px;
+    overflow:hidden;
+    margin-top:20px;
 }
 
 .service-placeholder img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  display:block;
-}
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}@media(max-width:900px){.services{padding:85px 5vw}.services-grid{grid-template-columns:1fr}.service-card{min-height:360px}}
 
-.video-overlay{
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  padding:14px 22px;
-  background:rgba(0,0,0,.75);
-  color:#fff;
-  text-decoration:none;
-  border:1px solid rgba(255,255,255,.4);
-  border-radius:999px;
-  font-weight:700;
-  white-space:nowrap;
-}
 }@media(max-width:900px){.services{padding:85px 5vw}.services-grid{grid-template-columns:1fr}.service-card{min-height:360px}}
 
 *{box-sizing:border-box;margin:0;padding:0}
