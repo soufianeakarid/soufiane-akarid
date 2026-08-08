@@ -92,19 +92,34 @@
 .service-card p{color:#99958d;line-height:1.65;font-size:15px;max-width:520px;margin-top:15px}
 
 .service-placeholder{
-    width:100%;
-    border-radius:16px;
-    overflow:hidden;
-    margin-top:20px;
+  position:relative;
+  width:100%;
+  height:280px;
+  margin-top:20px;
+  border-radius:16px;
+  overflow:hidden;
 }
 
 .service-placeholder img{
-    width:100%;
-    height:auto;
-    max-width:100%;
-    object-fit:contain;
-    display:block;
-    border-radius:14px;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.video-overlay{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  padding:14px 22px;
+  background:rgba(0,0,0,.75);
+  color:#fff;
+  text-decoration:none;
+  border:1px solid rgba(255,255,255,.4);
+  border-radius:999px;
+  font-weight:700;
+  white-space:nowrap;
 }
 }@media(max-width:900px){.services{padding:85px 5vw}.services-grid{grid-template-columns:1fr}.service-card{min-height:360px}}
 
